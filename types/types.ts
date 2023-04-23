@@ -12,23 +12,5 @@ export type Notice = {
   user_id: string | undefined;
 };
 
-const test: Task[] = [
-  {
-    id: "test1",
-    created_at: "111",
-    title: "testtitle",
-    user_id: undefined,
-  },
-  {
-    id: "test2",
-    created_at: "111",
-    title: "testtitle",
-    user_id: undefined,
-  },
-  {
-    id: "test3",
-    created_at: "111",
-    title: "testtitle",
-    user_id: undefined,
-  },
-];
+export type EditedTask = Omit<Task, "created_at" | "user_id">;
+export type EditedNotice = Omit<Notice, "created_at" | "user_id">;
