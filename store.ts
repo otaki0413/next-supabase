@@ -16,7 +16,7 @@ type State = {
  * create関数は状態と更新関数を保持するオブジェクトを作成。
  * useStoreをコンポーネント内で使用すると、これらの状態を取得可能。
  */
-export const useStore = create<State>((set) => ({
+const useStore = create<State>((set) => ({
   editedTask: { id: "", title: "" },
   editedNotice: { id: "", content: "" },
   updateEditedTask: (payload) =>
@@ -29,10 +29,12 @@ export const useStore = create<State>((set) => ({
   resetEditedTask: () => set({ editedTask: { id: "", title: "" } }),
   updateEditedNotice: (payload) =>
     set({
-      editedTask: {
+      editedNotice: {
         id: payload.id,
-        title: payload.content,
+        content: payload.content,
       },
     }),
   resetEditedNotice: () => set({ editedNotice: { id: "", content: "" } }),
 }));
+
+export default useStore;

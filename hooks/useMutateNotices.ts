@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "react-query";
-import { useStore } from "@/store";
+import useStore from "@/store";
 import { supabase } from "@/lib/supabase";
 import { Notice, EditedNotice } from "./../types/types";
 
 // Notice関連のMutationカスタムフック
-export const useMutationNotice = () => {
+export const useMutateNotice = () => {
   // クライアント接続
   const queryClient = useQueryClient();
   const reset = useStore((state) => state.resetEditedNotice);
@@ -24,7 +24,7 @@ export const useMutationNotice = () => {
         // キャッシュの更新
         const prevNotices = queryClient.getQueryData<Notice[]>(["notices"]);
         if (prevNotices) {
-          queryClient.setQueryData(["todos"], [...prevNotices, res[0]]);
+          queryClient.setQueryData(["notices"], [...prevNotices, res[0]]);
         }
         reset();
       },
