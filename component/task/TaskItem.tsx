@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useStore } from "@/store";
+import useStore from "@/store";
 import { useMutateTask } from "@/hooks/useMutateTask";
 import { Task } from "@/types/types";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";

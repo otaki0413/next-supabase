@@ -1,7 +1,7 @@
 import { FC, FormEvent } from "react";
 import { supabase } from "@/lib/supabase";
-import { useStore } from "@/store";
 import { useMutateTask } from "@/hooks/useMutateTask";
+import useStore from "@/store";
 
 export const TaskForm: FC = () => {
   const { editedTask } = useStore();
@@ -30,7 +30,7 @@ export const TaskForm: FC = () => {
     <form onSubmit={submitHandler}>
       <input
         type="text"
-        className="focus: my-2 rounded border border-gray-300 px-3 py-2 text-sm placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
+        className="my-2 rounded border border-gray-300 px-3 py-2 text-sm placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
         placeholder="New task ?"
         value={editedTask.title}
         onChange={(e) => update({ ...editedTask, title: e.target.value })}

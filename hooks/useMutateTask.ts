@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
-import { useStore } from "@/store";
+import useStore from "@/store";
 import { supabase } from "@/lib/supabase";
 import { Task, EditedTask } from "./../types/types";
 
@@ -56,9 +56,7 @@ export const useMutateTask = () => {
         if (prevTodos) {
           queryClient.setQueryData(
             ["todos"],
-            prevTodos.map((task) => {
-              task.id === variables.id ? res[0] : task;
-            })
+            prevTodos.map((task) => (task.id === variables.id ? res[0] : task))
           );
         }
         reset();

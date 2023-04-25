@@ -1,9 +1,15 @@
 import { NextPage } from "next";
 import { supabase } from "@/lib/supabase";
 import { Layout } from "@/component/Layout";
-import { DocumentTextIcon, LogoutIcon } from "@heroicons/react/solid";
+import {
+  DocumentTextIcon,
+  LogoutIcon,
+  StatusOnlineIcon,
+} from "@heroicons/react/solid";
 import { TaskForm } from "@/component/task/TaskForm";
 import { TaskList } from "@/component/task/TaskList";
+import { NoticeForm } from "@/component/notice/NoticeForm";
+import { NoticeList } from "@/component/notice/NoticeList";
 
 const Dashboard: NextPage = () => {
   // サインアウト処理
@@ -12,7 +18,6 @@ const Dashboard: NextPage = () => {
   };
   return (
     <Layout title="Dashboard">
-      {/* ログアウトボタン */}
       <LogoutIcon
         className="mb-6 h-6 w-6 cursor-pointer text-blue-500"
         onClick={signOut}
@@ -27,6 +32,13 @@ const Dashboard: NextPage = () => {
           <TaskList />
         </div>
         {/* Notice関連 */}
+        <div>
+          <div className="my-3 flex justify-center">
+            <StatusOnlineIcon className="h-8 w-8 text-blue-500" />
+          </div>
+          <NoticeForm />
+          <NoticeList />
+        </div>
       </div>
     </Layout>
   );
