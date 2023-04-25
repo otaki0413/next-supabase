@@ -10,11 +10,17 @@ import { TaskForm } from "@/component/task/TaskForm";
 import { TaskList } from "@/component/task/TaskList";
 import { NoticeForm } from "@/component/notice/NoticeForm";
 import { NoticeList } from "@/component/notice/NoticeList";
+import { useQueryClient } from "react-query";
 
 const Dashboard: NextPage = () => {
+  const queryClient = useQueryClient();
+
   // サインアウト処理
   const signOut = () => {
     supabase.auth.signOut();
+    // キャッシュの削除
+    queryClient.removeQueries("todos");
+    queryClient.removeQueries("notices");
   };
   return (
     <Layout title="Dashboard">
